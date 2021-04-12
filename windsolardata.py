@@ -9,12 +9,15 @@ import requests as rq
 import xml.etree.ElementTree as ET
 import numpy as np
 import matplotlib.pyplot as plt
+from datetime import datetime
 from datetime import date
 
 
 APIKey = 'g0t43vms7e1tlk9'
-Date = '2021-04-08'
-Period = '24'
+Date = str(date.today())
+Time = datetime.now()
+Time = Time.strftime("%H")
+Period = str(int((np.float(Time)-2)*2))
 # x = rq.get('https://api.bmreports.com/BMRS/STORAW/?APIKey=g0t43vms7e1tlk9&FromSettlementDate=2014-12-31&ServiceType=xml/XML')
 ws = rq.get('https://api.bmreports.com/BMRS/B1620/V1?APIKey='+ APIKey +'&SettlementDate=' + Date +'&Period='+ Period +'&ServiceType=xml')
 #%%
